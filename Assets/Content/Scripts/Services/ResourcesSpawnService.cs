@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Content.Scripts.SO;
@@ -20,9 +21,14 @@ namespace Content.Scripts.Services
             this.worldGridService = worldGridService;
         }
 
-        private IEnumerator ResourcesSpawnerCorutine()
+        private void Update()
         {
-            yield return null;
+            ResourcesSpawnerUpdate();
+        }
+        
+        private void ResourcesSpawnerUpdate()
+        {
+            
         }
     }
 }

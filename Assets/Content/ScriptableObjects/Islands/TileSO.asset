@@ -12,10 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27687dbb5b26c0f4d84b19ad2ef66f22, type: 3}
   m_Name: TileSO
   m_EditorClassIdentifier: 
-  <TileDatas>k__BackingField:
-  - <TileType>k__BackingField: 0
-    <TilePrefab>k__BackingField: {fileID: 1211529979742410086, guid: 9483750dfaeed764a84e825c46029f58,
-      type: 3}
-  - <TileType>k__BackingField: 1
-    <TilePrefab>k__BackingField: {fileID: 1211529979742410086, guid: 56321591c4804d5489568790a19fe43c,
-      type: 3}
+  tileDatas: []
