@@ -10,7 +10,7 @@ namespace Content.Scripts.Installers
             BindService<WorldGridService>();
             BindService<WorldTileService>();
             BindService<WorldGeneratorService>();
-            BindService<ResourcesSpawnService>();
+            BindService<WorldResourcesService>();
             BindService<CameraService>();
             BindService<PlayerService>();
         }

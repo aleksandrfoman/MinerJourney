@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd13d623095f66949b08ce45254744c6, type: 3}
+  m_Name: WorldResourcesSO
+  m_EditorClassIdentifier: 
+  <TilesResources>k__BackingField:
+  - <TileType>k__BackingField: 0
+    <resourcesPrefab>k__BackingField:
+    - {fileID: 7253002243049815466, guid: 9ba6e1540d20bbe4cbad3f28593e6d96, type: 3}
+    - {fileID: 1706261411354500526, guid: ddd1e94ef114d154182d7fbd93bebea8, type: 3}
+    - {fileID: 6886501762033739488, guid: 23374154c7c697a4a857262d25f4aee5, type: 3}

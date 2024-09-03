@@ -6,7 +6,6 @@ namespace Content.Scripts.Services
     public class WorldGridService : MonoBehaviour
     {
         private Dictionary<Vector2Int, ECellType> gridMap = new Dictionary<Vector2Int, ECellType>();
-        private List<Vector2Int> emptyCellsList;
         public void AddCell(Vector2Int pos,ECellType cellType)
         {
             if (!HasCell(pos, out ECellType type))
@@ -37,18 +36,6 @@ namespace Content.Scripts.Services
             cellType = ECellType.None;
             return false;
         }
-
-        // public bool GetEmptyCell(out Vector2Int pos)
-        // {
-        //     emptyCellsList.Clear();
-        //     foreach (var item in gridMap)
-        //     {
-        //         if (item.Value == ECellType.Empty)
-        //         {
-        //             //emptyCellsList.
-        //         }
-        //     }
-        // }
     }
 
     public enum ECellType

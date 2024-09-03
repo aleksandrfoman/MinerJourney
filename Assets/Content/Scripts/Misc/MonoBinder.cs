@@ -7,7 +7,7 @@ namespace Content.Scripts.Misc
         protected void BindService<T>()
         {
             var service = GetComponentInChildren<T>();
-            print(typeof(T).Name + " service <b>binded</b>");
+            //print(typeof(T).Name + " service <b>binded</b>");
             Container.Bind<T>().FromInstance(service).AsSingle().NonLazy();
             
         }

@@ -7,9 +7,9 @@ using Zenject;
 
 namespace Content.Scripts.Services
 {
-    public class ResourcesSpawnService : MonoBehaviour
+    public class WorldResourcesService : MonoBehaviour
     {
-        [SerializeField] private List<TileResourcesSO> tileResourcesSoList;
+        [SerializeField] private WorldResourcesSO worldResourcesSO;
         
         private WorldTileService worldTileService;
         private WorldGridService worldGridService;

@@ -10,9 +10,10 @@ namespace Content.Scripts
         [SerializeField] private ETileType tileType;
         [SerializeField,ReadOnly] private Vector2Int tilePos;
 
-        public void Init(Vector2Int tilePos)
+        public void Init()
         {
-            this.tilePos = tilePos;
+            Vector3Int ceilPos = Vector3Int.CeilToInt(transform.position);
+            this.tilePos = new Vector2Int(ceilPos.x,ceilPos.z);
         }
     }
 

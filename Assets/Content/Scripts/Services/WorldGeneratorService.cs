@@ -24,6 +24,10 @@ namespace Content.Scripts.Services
             {
                 for (var j = 0; j < islands[i].IslandTilesList.Count; j++)
                 {
+                    for (int k = 0; k < islands[i].IslandTilesList.Count; k++)
+                    {
+                        islands[i].IslandTilesList[k].Init();
+                    }
                     worldTileService.AddTile(islands[i].IslandTilesList[j]);
                 }
             }
