@@ -42,6 +42,6 @@ namespace Content.Scripts.Services
     {
         None,
         Empty,
-        NotEmpty
+        NotEmpty,
     }
 }

@@ -13,6 +13,6 @@ namespace Content.Scripts.SO
     public class TileResource
     {
         [field: SerializeField] public ETileType TileType { get; private set; }
-        [field: SerializeField] public MiningResource[] resourcesPrefab { get; private set; }
+        [field: SerializeField] public MiningResource[] ResourcesPrefab { get; private set; }
     }
 }

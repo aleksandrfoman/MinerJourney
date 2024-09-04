@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8426848029385938978}
   - component: {fileID: 1706261411354500526}
+  - component: {fileID: 8082761361936735144}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -78,6 +79,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 1
+  tilePos: {x: 0, y: 0}
+--- !u!135 &8082761361936735144
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8361079315132378843}
+  m_Material: {fileID: 13400000, guid: 28e134ea2e1eb094f9f685dad48bff91, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.41
+  m_Center: {x: 0, y: 0.33, z: 0}
 --- !u!1001 &3906929122686846822
 PrefabInstance:
   m_ObjectHideFlags: 0

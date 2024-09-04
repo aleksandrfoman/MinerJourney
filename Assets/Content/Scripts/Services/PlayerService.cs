@@ -6,8 +6,10 @@ namespace Content.Scripts.Services
 {
     public class PlayerService : MonoBehaviour
     {
+        public Player CurPlayer => curPlayer;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private Player playerPrefab;
+        private Player curPlayer;
         
         [Inject]
         private void Construct(CameraService cameraService)
@@ -18,6 +20,7 @@ namespace Content.Scripts.Services
         private void SpawnPlayer(Transform playerFollow)
         {
             Player player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
+            curPlayer = player;
             player.Init(playerFollow);
         }
     }

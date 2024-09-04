@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 namespace Content.Scripts
 {
@@ -24,7 +25,8 @@ namespace Content.Scripts
                 for (int y = 0; y < size.y; y++)
                 {
                     Vector3 pos = new Vector3(x, 0f, y);
-                    Tile tile = Instantiate(tilePrefab, pos, Quaternion.identity);
+                    Tile tile = PrefabUtility.InstantiatePrefab(tilePrefab,parent.transform) as Tile;
+                    tile.transform.position = pos;
                     tile.transform.parent = parent.transform;
                 }
             }
