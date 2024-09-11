@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6138867456167738784}
   - component: {fileID: 2710858246657926023}
   - component: {fileID: 4818696267065564896}
+  - component: {fileID: 5257871989744775015}
   - component: {fileID: 6312290025275387197}
   - component: {fileID: 1460330250105237654}
   m_Layer: 0
@@ -85,7 +86,7 @@ MonoBehaviour:
     rigidbody: {fileID: 6312290025275387197}
     rotateTransform: {fileID: 3444854907782870848}
     speed: 2
-    rotateSpeed: 6
+    rotateSpeed: 9
   playerAnimator:
     animator: {fileID: 749083141112840118}
   stateMachine: {fileID: 2710858246657926023}
@@ -106,6 +107,8 @@ MonoBehaviour:
   statesList:
   - stateType: 0
     stateAction: {fileID: 4818696267065564896}
+  - stateType: 1
+    stateAction: {fileID: 5257871989744775015}
   startAction: 0
   currentAction: {fileID: 4818696267065564896}
   lastStateKey: 0
@@ -119,6 +122,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3b06a66ddb564e4dada59ec80c928b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5257871989744775015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625829978217937578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44c4a70f086e354482a0c1d81a16a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &6312290025275387197
@@ -278,7 +293,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8436256916229715285}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: a757cd7314117f544a6a53469bc118f1, type: 3}
   m_Controller: {fileID: 9100000, guid: db012357cfb8c874bbf31e8caca1190c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0

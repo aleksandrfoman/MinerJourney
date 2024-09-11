@@ -15,6 +15,38 @@ namespace Content.Scripts.Services
         private WorldTileService worldTileService;
         private PlayerService playerService;
         
+        private List<MiningResource> miningResourcesList = new List<MiningResource>();
+
+        public MiningResource FindNearMiningResource(Vector3 pos, float findRadius)
+        {
+            if (miningResourcesList.Count < 0)
+            {
+                return null;
+            }
+
+            float tempDist = findRadius;
+            MiningResource miningResource = null;
+
+            if (miningResourcesList.Count > 0)
+            {
+                for (int i = 0; i < miningResourcesList.Count; i++)
+                {
+                    MiningResource curMiningResource = miningResourcesList[i];
+                    if (curMiningResource != null)
+                    {
+                        float dist = Vector3.Distance(pos, curMiningResource.transform.position);
+                        if (dist < tempDist)
+                        {
+                            tempDist = dist;
+                            miningResource = curMiningResource;
+                        }
+                    }
+                }
+            }
+            return miningResource;
+        }
+
+
         [Inject]
         private void Construct(WorldTileService worldTileService, PlayerService playerService)
         {
@@ -43,6 +75,7 @@ namespace Content.Scripts.Services
                                 MiningResource curResource = Instantiate(miningResourcesPrefabs[rnd]);
                                 curResource.transform.parent = parentTransform;
                                 curResource.Init(tilePosList[j]);
+                                miningResourcesList.Add(curResource);
                             }
                         }
                     }

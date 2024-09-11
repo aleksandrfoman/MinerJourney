@@ -13,16 +13,25 @@ namespace Content.Scripts.PlayerScripts.State
             {
                 _camera = Camera.main;
             }
-            Machine.PlayerAnimator.PlayRun();
         }
 
         public override void ProcessState()
         {
             Machine.PlayerMovement.MyInput();
-            Machine.PlayerAnimator.UpdateDirectional(Machine.PlayerMovement.Direction);
             Machine.PlayerMovement.Rotate();
             Machine.PlayerMovement.Movement();
             Machine.PlayerFollow.UpdatePointMove();
+
+            if (Machine.PlayerMining.HasFoundMiningResource())
+            {
+                Machine.PlayerMining.Mining();
+                Machine.PlayerAnimator.PlayAttack(true);
+            }
+            else
+            {
+                Machine.PlayerAnimator.PlayAttack(false);
+                Machine.PlayerAnimator.UpdateMovement(Machine.PlayerMovement.Direction);
+            }
         }
         
         

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8426848029385938978}
   - component: {fileID: 1706261411354500526}
   - component: {fileID: 8082761361936735144}
+  - component: {fileID: 1115181754583311011}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 1
+  quickOutline: {fileID: 1115181754583311011}
   tilePos: {x: 0, y: 0}
 --- !u!135 &8082761361936735144
 SphereCollider:
@@ -101,6 +103,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.41
   m_Center: {x: 0, y: 0.33, z: 0}
+--- !u!114 &1115181754583311011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8361079315132378843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fbcfc02808d7b4db4fdb4758954054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &3906929122686846822
 PrefabInstance:
   m_ObjectHideFlags: 0

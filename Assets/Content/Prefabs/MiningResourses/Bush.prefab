@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1051953999921482936}
   - component: {fileID: 7253002243049815466}
   - component: {fileID: 8833494017496056926}
+  - component: {fileID: 1163674926096787929}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 0
+  quickOutline: {fileID: 1163674926096787929}
   tilePos: {x: 0, y: 0}
 --- !u!135 &8833494017496056926
 SphereCollider:
@@ -69,6 +71,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.41
   m_Center: {x: 0, y: 0.21, z: 0}
+--- !u!114 &1163674926096787929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6975010056898628083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fbcfc02808d7b4db4fdb4758954054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 1
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &7498879606472483891
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush
+      objectReference: {fileID: 0}
+    - target: {fileID: 2420491156171129425, guid: cb6535a34b792cc4a8b406029e8a1abd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

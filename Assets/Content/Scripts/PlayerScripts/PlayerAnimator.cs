@@ -9,32 +9,29 @@ namespace Content.Scripts.PlayerScripts
     {
         [SerializeField] private Animator animator;
         private int _layerCount = 2;
-        private Vector2 _animDir;
         
-        public void PlayAim()
-        {
-            animator.SetBool("IsAim",true);
-            animator.SetTrigger("TriggerAim");
-            EnableAimLayer(true);
-        }
         public void PlayRun()
         {
-            animator.SetBool("IsAim",false);
-            animator.SetTrigger("TriggerRun");
-            EnableAimLayer(false);
+            animator.SetBool("IsRun",true);
+        }
+        
+        public void PlayIdle()
+        {
+            animator.SetBool("IsRun",false);
         }
 
         public void PlayDead()
         {
             animator.SetBool("IsAim",false);
             animator.SetTrigger("TriggerDeath");
-            EnableAimLayer(false);
         }
         
-        public void PlayShoot()
+        public void PlayAttack(bool value)
         {
-            animator.SetTrigger("TriggerShoot");
+            animator.SetBool("IsAttack",value);
         }
+        
+        
 
         private void EnableAimLayer(bool value)
         {
@@ -42,12 +39,16 @@ namespace Content.Scripts.PlayerScripts
             DOTween.To(() => animator.GetLayerWeight(1), x => animator.SetLayerWeight(1, x), weight, 0.25f);
         }
         
-        public void UpdateDirectional(Vector2 dir)
+        public void UpdateMovement(Vector2 dir)
         {
-            _animDir = Vector2.Lerp(_animDir, dir, Time.deltaTime*10f);
-            
-            animator.SetFloat("Horizontal", _animDir.x);
-            animator.SetFloat("Vertical",_animDir.y);
+            if (dir.x != 0 || dir.y != 0)
+            {
+                PlayRun();   
+            }
+            else
+            {
+                PlayIdle();
+            }
         }
     }
 }
