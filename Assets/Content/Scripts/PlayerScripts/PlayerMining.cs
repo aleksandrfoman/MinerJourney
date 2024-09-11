@@ -7,22 +7,21 @@ namespace Content.Scripts.PlayerScripts
     [Serializable]
     public class PlayerMining
     {
-        [SerializeField] private float findRadius = 1.5f;
+        public MiningResource MiningResource => curMiningResource;
+        [SerializeField] private float findRadius = 0.1f;
         private WorldResourcesService worldResourcesService;
         private Player player;
         private MiningResource curMiningResource;
         
-        [Inject]
-        private void Construct(WorldResourcesService worldResourcesService, PlayerService playerService)
+        public void Init(WorldResourcesService worldResourcesService, Player player)
         {
-            player = playerService.CurPlayer;
             this.worldResourcesService = worldResourcesService;
+            this.player = player;
         }
 
         private MiningResource FindNearMiningResource()
         {
-            Debug.Log(worldResourcesService);
-            return worldResourcesService.FindNearMiningResource(player.transform.position, findRadius);
+            return worldResourcesService.FindNearMiningResource(player.transform.position, 4f);
         }
 
 
@@ -38,14 +37,23 @@ namespace Content.Scripts.PlayerScripts
         public void DisableMining()
         {
             curMiningResource.EnableOutline(false);
+            curMiningResource = null;
+        }
+
+        public bool CheckDistance()
+        {
+            return Vector3.Distance(curMiningResource.transform.position, player.transform.position) <= findRadius;
         }
         
         public bool HasFoundMiningResource()
         {
             MiningResource miningResource = FindNearMiningResource();
-                
             if (miningResource)
             {
+                if (curMiningResource != null)
+                {
+                    DisableMining();
+                }
                 curMiningResource = miningResource;
                 return true;
             }

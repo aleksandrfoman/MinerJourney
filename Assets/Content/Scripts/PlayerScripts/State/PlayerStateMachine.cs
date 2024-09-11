@@ -7,12 +7,6 @@ namespace Content.Scripts.PlayerScripts.State
         public override void StateSwitch()
         {
             base.StateSwitch();
-            
-            if (CurrentStateType == EPlayerState.Move)
-            {
-                return;
-            }
-            StartAction(EPlayerState.Move);
         }
     }
 }

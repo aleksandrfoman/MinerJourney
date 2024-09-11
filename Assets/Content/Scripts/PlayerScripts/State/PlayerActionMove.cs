@@ -17,25 +17,29 @@ namespace Content.Scripts.PlayerScripts.State
 
         public override void ProcessState()
         {
+                        
+            if (Machine.PlayerMining.HasFoundMiningResource())
+            {
+                if (Machine.PlayerMining.CheckDistance())
+                {
+                    Machine.PlayerMovement.Rotate(Machine.PlayerMining.MiningResource.transform.position);
+                    Machine.PlayerAnimator.PlayAttack(true);
+                    Machine.PlayerMining.Mining();
+                }
+                else
+                {
+                    Machine.PlayerAnimator.PlayAttack(false);
+                    Machine.PlayerMining.DisableMining();
+                }
+            }
+            
             Machine.PlayerMovement.MyInput();
             Machine.PlayerMovement.Rotate();
             Machine.PlayerMovement.Movement();
             Machine.PlayerFollow.UpdatePointMove();
-
-            if (Machine.PlayerMining.HasFoundMiningResource())
-            {
-                Machine.PlayerMining.Mining();
-                Machine.PlayerAnimator.PlayAttack(true);
-            }
-            else
-            {
-                Machine.PlayerAnimator.PlayAttack(false);
-                Machine.PlayerAnimator.UpdateMovement(Machine.PlayerMovement.Direction);
-            }
+            Machine.PlayerAnimator.UpdateMovement(Machine.PlayerMovement.Direction);
         }
         
-        
-
         public override void EndState()
         {
             base.EndState();

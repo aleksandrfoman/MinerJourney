@@ -89,6 +89,8 @@ MonoBehaviour:
     rotateSpeed: 9
   playerAnimator:
     animator: {fileID: 749083141112840118}
+  playerMining:
+    findRadius: 0.7
   stateMachine: {fileID: 2710858246657926023}
   playerFollow:
     followPoint: {fileID: 0}

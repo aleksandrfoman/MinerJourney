@@ -10,18 +10,22 @@ namespace Content.Scripts.Services
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private Player playerPrefab;
         private Player curPlayer;
+        private WorldResourcesService worldResourcesService;
+        private CameraService cameraService;
         
         [Inject]
-        private void Construct(CameraService cameraService)
+        private void Construct(CameraService cameraService, WorldResourcesService worldResourcesService)
         {
-            SpawnPlayer(cameraService.PlayerFollow);
+            this.worldResourcesService = worldResourcesService;
+            this.cameraService = cameraService;
+            SpawnPlayer();
         }
 
-        private void SpawnPlayer(Transform playerFollow)
+        private void SpawnPlayer()
         {
             Player player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
             curPlayer = player;
-            player.Init(playerFollow);
+            player.Init(cameraService.PlayerFollow,worldResourcesService);
         }
     }
 }
