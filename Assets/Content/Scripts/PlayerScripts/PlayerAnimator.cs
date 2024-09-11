@@ -8,8 +8,14 @@ namespace Content.Scripts.PlayerScripts
     public class PlayerAnimator
     {
         [SerializeField] private Animator animator;
+        [SerializeField] private AnimationEventsListener eventsListener;
         private int _layerCount = 2;
-        
+
+        public void Init()
+        {
+            eventsListener.OnAttackComplete += AttackComplete;
+        }
+
         public void PlayRun()
         {
             animator.SetBool("IsRun",true);
@@ -30,8 +36,6 @@ namespace Content.Scripts.PlayerScripts
         {
             animator.SetBool("IsAttack",value);
         }
-        
-        
 
         private void EnableAimLayer(bool value)
         {
@@ -49,6 +53,18 @@ namespace Content.Scripts.PlayerScripts
             {
                 PlayIdle();
             }
+        }
+
+        public bool IsAttackComplete => isAttackComplete;
+        private bool isAttackComplete;
+
+        public void ResetCompleteAttack()
+        {
+            isAttackComplete = false;
+        }
+        public void AttackComplete()
+        {
+            isAttackComplete = true;
         }
     }
 }

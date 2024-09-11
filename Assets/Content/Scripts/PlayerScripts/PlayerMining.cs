@@ -9,14 +9,17 @@ namespace Content.Scripts.PlayerScripts
     {
         public MiningResource MiningResource => curMiningResource;
         [SerializeField] private float findRadius = 0.1f;
+        [SerializeField] private ParticleSystem miningParticle;
         private WorldResourcesService worldResourcesService;
         private Player player;
+        private Material particleMaterial;
         private MiningResource curMiningResource;
         
         public void Init(WorldResourcesService worldResourcesService, Player player)
         {
             this.worldResourcesService = worldResourcesService;
             this.player = player;
+            particleMaterial = miningParticle.GetComponent<ParticleSystemRenderer>().material;
         }
 
         private MiningResource FindNearMiningResource()
@@ -24,14 +27,11 @@ namespace Content.Scripts.PlayerScripts
             return worldResourcesService.FindNearMiningResource(player.transform.position, 4f);
         }
 
-
-        public void Mining()
+        public void PlayParticle()
         {
-            if (curMiningResource != null)
-            {
-                curMiningResource.EnableOutline(true);
-                Debug.Log("Mining" + curMiningResource);
-            }
+            miningParticle.gameObject.SetActive(true);
+            particleMaterial.color = curMiningResource.Color;
+            miningParticle.Play();
         }
 
         public void DisableMining()

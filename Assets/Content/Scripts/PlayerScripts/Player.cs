@@ -23,6 +23,7 @@ namespace Content.Scripts.PlayerScripts
         public void Init(Transform followPoint,WorldResourcesService worldResourcesService)
         {
             playerFollow.Init(transform,followPoint);
+            playerAnimator.Init();
             playerMining.Init(worldResourcesService,this);
             stateMachine.Init(this);
         }

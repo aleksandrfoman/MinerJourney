@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aafe59e43ba0d545b259d742706b312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: {r: 0.29917893, g: 0.5377358, b: 0.0076094554, a: 1}
   resourceType: 2
   quickOutline: {fileID: 7492409583516268780}
   tilePos: {x: 0, y: 0}

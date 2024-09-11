@@ -24,7 +24,14 @@ namespace Content.Scripts.PlayerScripts.State
                 {
                     Machine.PlayerMovement.Rotate(Machine.PlayerMining.MiningResource.transform.position);
                     Machine.PlayerAnimator.PlayAttack(true);
-                    Machine.PlayerMining.Mining();
+                    Machine.PlayerMining.MiningResource.EnableOutline(true);
+                    
+                    if (Machine.PlayerAnimator.IsAttackComplete)
+                    {
+                        Machine.PlayerAnimator.ResetCompleteAttack();
+                        Machine.PlayerMining.MiningResource.TakeDamage();
+                        Machine.PlayerMining.PlayParticle();
+                    }
                 }
                 else
                 {

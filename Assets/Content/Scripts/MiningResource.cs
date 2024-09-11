@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 namespace Content.Scripts
@@ -5,6 +6,8 @@ namespace Content.Scripts
     public class MiningResource : MonoBehaviour
     {
         public EResourceType ResourceType => resourceType;
+        public Color Color => color;
+        [SerializeField] private Color color;
         [SerializeField] private EResourceType resourceType;
         [SerializeField] private QuickOutline quickOutline;
         [SerializeField,ReadOnly] private Vector2Int tilePos;
@@ -21,6 +24,14 @@ namespace Content.Scripts
             quickOutline.enabled = false;
         }
 
+        public void TakeDamage()
+        {
+            transform.DOScale(Vector3.one * 0.8f, 0.125f).SetEase(Ease.InFlash).OnComplete((() =>
+            {
+                transform.DOScale(Vector3.one, 0.125f).SetEase(Ease.OutFlash);
+            }));
+        }
+        
         public void EnableOutline(bool value)
         {
             if(value==isOutline) return;
@@ -34,6 +45,7 @@ namespace Content.Scripts
     {
         Bush,
         Stone,
+        IronOre,
         Tree
     }
 }

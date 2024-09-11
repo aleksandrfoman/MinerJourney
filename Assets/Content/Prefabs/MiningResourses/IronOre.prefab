@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8082761361936735144}
   - component: {fileID: 1115181754583311011}
   m_Layer: 0
-  m_Name: Stone
+  m_Name: IronOre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aafe59e43ba0d545b259d742706b312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.454902, g: 0.4784314, b: 0.5137255, a: 1}
+  color: {r: 0.45882356, g: 0.4784314, b: 0.5176471, a: 1}
   resourceType: 1
   quickOutline: {fileID: 1115181754583311011}
   tilePos: {x: 0, y: 0}
@@ -188,7 +188,7 @@ PrefabInstance:
     - target: {fileID: 6998466559314713455, guid: 97ae06fb919d0734e92d2fd401ee1896,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
