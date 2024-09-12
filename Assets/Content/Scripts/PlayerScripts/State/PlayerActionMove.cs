@@ -24,19 +24,18 @@ namespace Content.Scripts.PlayerScripts.State
                 {
                     Machine.PlayerMovement.Rotate(Machine.PlayerMining.MiningResource.transform.position);
                     Machine.PlayerAnimator.PlayAttack(true);
-                    Machine.PlayerMining.MiningResource.EnableOutline(true);
-                    
+                    Machine.PlayerMining.MiningResource.EnableSelect(true);
+
                     if (Machine.PlayerAnimator.IsAttackComplete)
                     {
                         Machine.PlayerAnimator.ResetCompleteAttack();
-                        Machine.PlayerMining.MiningResource.TakeDamage();
+                        Machine.PlayerMining.MiningResource.TakeDamage(1f);
                         Machine.PlayerMining.PlayParticle();
                     }
                 }
                 else
                 {
                     Machine.PlayerAnimator.PlayAttack(false);
-                    Machine.PlayerMining.DisableMining();
                 }
             }
             

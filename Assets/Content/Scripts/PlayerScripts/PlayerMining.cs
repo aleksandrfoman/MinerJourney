@@ -36,12 +36,14 @@ namespace Content.Scripts.PlayerScripts
 
         public void DisableMining()
         {
-            curMiningResource.EnableOutline(false);
+            curMiningResource.EnableSelect(false);
             curMiningResource = null;
         }
 
         public bool CheckDistance()
         {
+            if (curMiningResource == null) return false;
+            
             return Vector3.Distance(curMiningResource.transform.position, player.transform.position) <= findRadius;
         }
         
@@ -50,7 +52,7 @@ namespace Content.Scripts.PlayerScripts
             MiningResource miningResource = FindNearMiningResource();
             if (miningResource)
             {
-                if (curMiningResource != null)
+                if (curMiningResource != null && curMiningResource!=miningResource)
                 {
                     DisableMining();
                 }

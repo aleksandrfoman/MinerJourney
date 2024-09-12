@@ -17,6 +17,14 @@ namespace Content.Scripts.Services
         
         private List<MiningResource> miningResourcesList = new List<MiningResource>();
 
+        [Inject]
+        private void Construct(WorldTileService worldTileService, PlayerService playerService)
+        {
+            this.worldTileService = worldTileService;
+            this.playerService = playerService;
+            InitSpawnResources();
+        }
+        
         public MiningResource FindNearMiningResource(Vector3 pos, float findRadius)
         {
             if (miningResourcesList.Count < 0)
@@ -45,15 +53,6 @@ namespace Content.Scripts.Services
             }
             return miningResource;
         }
-
-
-        [Inject]
-        private void Construct(WorldTileService worldTileService, PlayerService playerService)
-        {
-            this.worldTileService = worldTileService;
-            this.playerService = playerService;
-            InitSpawnResources();
-        }
         
         private void InitSpawnResources()
         {
@@ -74,13 +73,19 @@ namespace Content.Scripts.Services
                                 int rnd = Random.Range(0, miningResourcesPrefabs.Length);
                                 MiningResource curResource = Instantiate(miningResourcesPrefabs[rnd]);
                                 curResource.transform.parent = parentTransform;
-                                curResource.Init(tilePosList[j]);
+                                curResource.Init(tilePosList[j],this);
                                 miningResourcesList.Add(curResource);
                             }
                         }
                     }
                 }
             }
+        }
+
+        public void RemoveResource(MiningResource miningResource)
+        {
+            miningResourcesList.Remove(miningResource);
+            worldTileService.RemoveTile(miningResource.TilePos);
         }
     }
 }

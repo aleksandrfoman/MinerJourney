@@ -40,7 +40,16 @@ namespace Content.Scripts.Services
         {
             RemoveTile(tile.TilePos);
         }
+
+        public void ClearTile(Tile tile)
+        {
+            ClearTile(tile.TilePos);
+        }
         
+        public void ClearTile(Vector2Int pos)
+        {
+            worldGridService.AddCell(pos,ECellType.Empty);
+        }
         public bool HasTile(Tile tile)
         {
             return tileMap.ContainsKey(tile.TilePos);
