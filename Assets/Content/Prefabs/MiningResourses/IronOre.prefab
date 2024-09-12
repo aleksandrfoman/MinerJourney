@@ -80,12 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aafe59e43ba0d545b259d742706b312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.45882356, g: 0.4784314, b: 0.5176471, a: 1}
-  resourceType: 1
+  miningResourceSO: {fileID: 11400000, guid: ca22d185ecd8e0644af235cf74c493c5, type: 2}
   quickOutline: {fileID: 1115181754583311011}
   mesh: {fileID: 6947309942905908379}
   resourcesBar: {fileID: 5921392451517256733}
-  health: 6
   tilePos: {x: 0, y: 0}
 --- !u!135 &8082761361936735144
 SphereCollider:

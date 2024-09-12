@@ -1,5 +1,6 @@
 using System;
 using Content.Scripts.Services;
+using Content.Scripts.SO;
 using Content.Scripts.UI;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -11,17 +12,13 @@ namespace Content.Scripts
 {
     public class MiningResource : MonoBehaviour
     {
-        public EResourceType ResourceType => resourceType;
-        public Color Color => color;
-
+        public Color Color => miningResourceSO.Color;
         public Vector2Int TilePos => tilePos;
-        
-        [SerializeField] private Color color;
-        [SerializeField] private EResourceType resourceType;
+
+        [SerializeField] private MiningResourceSO miningResourceSO;
         [SerializeField] private QuickOutline quickOutline;
         [SerializeField] private Transform mesh;
         [SerializeField] private ResourcesBar resourcesBar;
-        [SerializeField] private float health;
         [SerializeField,ReadOnly] private Vector2Int tilePos;
         private WorldResourcesService worldResourcesService;
         private bool isSelect;
@@ -37,18 +34,33 @@ namespace Content.Scripts
             quickOutline.Init();
             isSelect = false;
             quickOutline.enabled = false;
-            curHealth = health;
+            curHealth = miningResourceSO.Health;
         }
 
         public void TakeDamage(float damage, Action OnDead = null)
         {
             ScaleAnim();
             curHealth -= damage;
-            resourcesBar.BarFill(curHealth/health);
+            resourcesBar.BarFill(curHealth/miningResourceSO.Health);
             if (curHealth <= 0)
             {
                 OnDead?.Invoke();
+                SpawnDrop();
                 Dead();
+            }
+        }
+
+        public void SpawnDrop()
+        {
+            if(miningResourceSO.DropList.Count<0) return;
+            
+            for (int i = 0; i < miningResourceSO.DropList.Count; i++)
+            {
+                for (int j = 0; j < miningResourceSO.DropList[i].Count; j++)
+                {
+                    DropItem dropItem = Instantiate(miningResourceSO.DropList[i].DropItem);
+                    dropItem.Init(transform.position);
+                }
             }
         }
 

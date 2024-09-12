@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9522e5eb8c890a42ac8e790d6210d37, type: 3}
-  m_Name: ResourcesSO
+  m_Script: {fileID: 11500000, guid: e6b6ab61bc097f64e97dd4a3b86e70db, type: 3}
+  m_Name: IronOre
   m_EditorClassIdentifier: 
-  <ResourcePrefab>k__BackingField: {fileID: 6886501762033739488, guid: 23374154c7c697a4a857262d25f4aee5,
-    type: 3}
+  Color: {r: 0.6263795, g: 0.63286376, b: 0.6415094, a: 1}
+  Health: 6
+  <DropList>k__BackingField: []
