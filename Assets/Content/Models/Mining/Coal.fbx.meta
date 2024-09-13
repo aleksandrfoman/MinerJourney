@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cb6535a34b792cc4a8b406029e8a1abd
+guid: 0e53ef3a3d232ce4fbd2db3ecce43ba6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,23 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Green
-    second: {fileID: 2100000, guid: c9488006a99e79946a511bb051a4ae95, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Red
-    second: {fileID: 2100000, guid: 7557c22b73cbb0947b93c4c3660c66d0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Texture
     second: {fileID: 2100000, guid: ba47a282655232548871f9a7c4651805, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tree
-    second: {fileID: 2100000, guid: 8fb212601e5943b48ae0accb5583e500, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

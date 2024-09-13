@@ -1,4 +1,5 @@
 using System;
+using Content.Scripts.Fabric;
 using Content.Scripts.Services;
 using Content.Scripts.SO;
 using Content.Scripts.UI;
@@ -6,6 +7,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Content.Scripts
@@ -58,7 +60,8 @@ namespace Content.Scripts
             {
                 for (int j = 0; j < miningResourceSO.DropList[i].Count; j++)
                 {
-                    DropItem dropItem = Instantiate(miningResourceSO.DropList[i].DropItem);
+                    
+                    DropItem dropItem = PrefabSpawnerFabric.Instance.SpawnItem(miningResourceSO.DropList[i].DropItem);
                     dropItem.Init(transform.position);
                 }
             }

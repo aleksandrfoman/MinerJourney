@@ -2,36 +2,54 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Content.Scripts.PlayerScripts;
+using Content.Scripts.Services;
 using DG.Tweening;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 public class DropItem : MonoBehaviour
 {
     [SerializeField] private Transform meshTransform;
+    [SerializeField] private TrailRenderer trailRenderer;
+    
+    private GameCanvasService gameCanvasService;
+    private Camera cameraMain;
+    
+    [Inject]
+    private void Construct(GameCanvasService gameCanvasService)
+    {
+        cameraMain = Camera.main;
+        this.gameCanvasService = gameCanvasService;
+    }
     public void Init(Vector3 spawnPos)
     {
         transform.position = spawnPos;
         transform.parent = null;
         transform.localScale = Vector3.one;
+        trailRenderer.gameObject.SetActive(false);
         Vector3 randomDirection = Random.insideUnitSphere.normalized * 0.35f;
         randomDirection.y = 0.15f;
         Vector3 endPosition = transform.position + randomDirection;
         gameObject.SetActive(true);
         transform.DOJump(endPosition, 1f,1, 0.45f).
             SetEase(Ease.InQuad).OnComplete((StartAnimation));
-
     }
     
-    public void Disable(Transform playerTransform)
+    public void Disable()
     {
         StopAnimation();
-        transform.parent = playerTransform;
-        transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InQuint);
-        transform.DOLocalJump(Vector3.zero,1f,1,1f).SetEase(Ease.OutQuad).OnComplete((() =>
+        Vector3 canvasPos = new Vector3(gameCanvasService.Backpack.position.x, gameCanvasService.Backpack.position.y, 4f);
+        Vector3 pos = cameraMain.ScreenToWorldPoint(canvasPos);
+        pos -= new Vector3(0.25f, 0.25f, 0f);
+        pos = cameraMain.transform.InverseTransformPoint(pos);
+        transform.parent = cameraMain.transform;
+        trailRenderer.Clear();
+        trailRenderer.gameObject.SetActive(true);
+        transform.DOLocalJump(pos,0.5f,1,1f).SetEase(Ease.OutBack).OnComplete(() =>
         {
             Destroy(gameObject);
-        }));
+        });
     }
     
     #region Collision
@@ -42,7 +60,7 @@ public class DropItem : MonoBehaviour
 
         if (player != null)
         {
-            Disable(player.transform);
+            Disable();
         }
     }
     #endregion
